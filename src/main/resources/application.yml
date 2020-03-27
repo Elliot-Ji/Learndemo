@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatis-plus?useSSL=false&serverTimezone=GMT%2B8&characterEncoding=UTF-8
+    username: root
+    password: 123456
+logging:
+  level:
+    root: warn
+    com.example.mybatisplus.dao: trace
+  pattern:
+    console: '%p%m%n'
+#mybatis-plus 逻辑删除功能:0 表示未删除,1 表示删除
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-not-delete-value: 0
+      logic-delete-value: 1

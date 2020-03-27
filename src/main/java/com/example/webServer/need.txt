@@ -1,0 +1,15 @@
+web server所用的相关知识:
+1.反射机制:如何获取class对象,如何动态获取对象;
+2.xml解析(方式一:SAX解析;方式二:DOM解析)
+3.html
+4.http协议:请求协议 ,响应协议
+
+手写web server:
+底层使用socket 连接
+读取web.xml配置文件,利用反射机制
+封装请求协议(Request)-->获取请求路径,请求参数;中文乱码处理;
+封装响应协议(Response)
+封装servlet--->处理业务代码,
+封装分发器DispachServlet
+添加多线程
+
