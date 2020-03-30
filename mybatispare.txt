@@ -1,0 +1,92 @@
+(一).mybatis参数处理:
+1.单个参数: mybatis不会做特殊处理
+        #{参数名}:取出参数的值
+
+2.多个参数:mybatis会做特殊处理
+        多个参数会被封装在一个Map中,key=param1.....paramn
+                                   value=传入的值
+        #{} 就是从map中获取指定的key的值,如果直接写#{参数名}会报错
+
+       解决方法1:使用命名参数:即在接口对应的方法参数加@Param("参数名")
+               多个参数会被封装在一个Map中,
+               key=使用@Param指定的参数名
+               value=传入的值
+               #{指定的参数名}
+
+           方法2:使用POJO:
+             如果多个参数正好是我们业务逻辑的数据模型,我们就可以直接传入POJO;
+             #{属性名}:取出传入的POJO的属性值
+
+           方法3:使用Map:
+             如果多个参数不是我们业务逻辑的数据模型,不经常使用,为了方便,我们可以直接传入Map;
+             #{key}:就是取出map中对应的值
+
+           方法4:使用TO(Transfer Object)
+             如果多个参数不是我们业务逻辑的数据模型,且经常使用,推荐写一个TO数据传输对象,如分页时
+
+       注意:如果传入的参数是Collection(List,Set)类型或者数组,mybatis也会特殊处理,
+             也是把集合或数组封装到map中;如果是List ,则key 是(list),#{list[0]};如果是数组,则key 是array
+
+3.参数值的获取:#{},${}
+   select * from table where id=${id} and last_name=#{lastName}
+   select * from table where id=2 and last_name=?
+   3.1:区别:#{}:以预编译的形式,将参数设置到SQL语句中;防止SQL注入
+        ${}:取出的值直接拼装在SQL语句中,会有安全问题
+
+   何时使用${}.原生JDBC不支持占位符的地方我们就可以使用${}取值
+   比如:分表(按照年份拆分),排序,动态获取表名时...
+   select * from ${year}_Salary where idxxxx
+
+   3.2:#{}更丰富的用法:
+          规定参数的一些规则:jdbcType:通常在某种特定的情况下需要被设置:
+          如:在传入的数据为null时,mybatis对null值会做特殊处理,而有些数据库则不能识别出这些特殊处理,如Oracle会报错
+            错误类型:jdbcType OTHER :无效的类型;因为mybatis对所有的null值都映射的是原生jdbc的OTHER类型,而oracle不能正确处理;
+           解决方法1:mybatis连接的是Oracle数据库,在#{email,JdbcType=NULL};
+               方法2:官方文档上讲明了,在其全局的配置文件中,jdbcTypeForNull属性默认为OTHER,Orcale不支持
+                     所以可以在全局配置文件中,jdbcTypeForNull=NULL;
+
+(二).查询返回值类型处理:select----List
+    2.1.返回值类型为List,resultType要写集合中的元素类型;
+    2.2.返回值类型是map,resultType类型就是map;
+    2.3.返回值是Map<Object,Employee>,value为封装的对象,key的指定,可以在该接口的方法上加上@MapKey(""),告诉mybatis来指定表中的列名;
+
+    自定义结果映射规则 resultMap,联合查询时
+     方法1:员工与部门表:要求查询员工的同时,查询到对应的部门,员工类中引入部门属性
+           在<resultMap>
+                <result column="did" property="dept.id"/>
+           </resultMap>中 利用级联属性封装结果集
+
+     方法2:当一个实体类中属性是一个对象时,可利用<association>标签
+             <resultMap>
+                <association property="dept" type="另一个实体类">
+                   <result column="" property=""/>
+                </association>
+             </resultMap>
+
+           可利用<association>实现分布查询;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

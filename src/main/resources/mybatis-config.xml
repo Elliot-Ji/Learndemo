@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--Mybatis全局配置文件-->
+<configuration>
+    <!--1.使用properties标签可以引入外部properties配置文件的内容
+        resource :引入类路径下的资源
+        url: 引入网络路径或者硬盘路径下的资源
+    -->
+    <properties resource="dbconfig.properties"></properties>
+
+    <!--2.settings包含了很多重要的设置项,配置一些基本属性-->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--引入日志框架-->
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <!--3.typeAliases:别名处理器,可以为java类型起别名
+         type:指定要求别名的全类型类名,;默认别名是类名小写 employee
+         alias: 指定新的别名
+    -->
+    <typeAliases>
+        <!--<typeAlias type="com.example.mybatis.Employee" alias="bb"/>-->
+        <!--package: 为某个包下,批量起别名
+            name: 指定包名,默认别名为类名小写-->
+        <!--<package name="com.example.mybatis"/>-->
+        <!--在包扫描下,可以使用@Alias注解(放置在类上)起别名-->
+    </typeAliases>
+
+    <!--4.environments: 可以配置多种环境 default:指定使用环境
+          environment: 具体的一个配置环境信息-->
+    <environments default="development">
+
+        <environment id="test">
+            <transactionManager type=""></transactionManager>
+            <dataSource type=""></dataSource>
+        </environment>
+
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}" />
+                <property name="url" value="${jdbc.url}" />
+                <property name="username" value="${jdbc.username}" />
+                <property name="password" value="${jdbc.password}" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--5.databaseIdProvider:支持多数据库厂商的
+          type:作用就是的到数据库厂商的标识,mybaits能根据不同的数据库厂商标识来执行sql
+      -->
+    <databaseIdProvider type="DB_VENDOR">
+        <!--为不同的数据库厂商起别名-->
+        <property name="MySQL" value="mysql"/>
+        <property name="Oracle" value="oracle"/>
+    </databaseIdProvider>
+
+    <!--6.mappers:将sql映射文件注册到全局配置文件中-->
+    <mappers>
+        <mapper resource="EmployeeMapper.xml" />
+        <!--class:指定映射接口,此时的映射文件必须与接口处于同一包下,且名称相同-->
+        <!--<mapper class=""/>-->
+    </mappers>
+
+</configuration>

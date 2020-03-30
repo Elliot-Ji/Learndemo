@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+<body>
+    <button>Change colors</button>
+    <span></span>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div id="stop">stop here</div>
+    <div></div>
+    <div></div>
+
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script>
+    $("button").click(function(){
+        $("div").each(function(i,item){
+            $(item).css("backgroundColor","Yellow");
+            if($(this).is("#stop")){
+                $("span").text("Stoped at div id="+i);
+                return false;
+            }
+        })
+    })
+</script>
+</html>

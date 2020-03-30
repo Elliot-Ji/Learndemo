@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!-- User 类与 t_user 对应 -->
+    <class name="com.example.entity.DataNotice"
+           table="DataNotice">
+        <!-- User的ID属性对应表的t_id列 -->
+        <id type="int" name="id" column="Id"></id>
+        <!-- 映射普通属性 -->
+        <property name="ZoneCode" column="b_ZoneCode"/>
+        <property name="NoticeDate" column="b_NoticeDate"/>
+        <property name="NoticeCount" column="b_NoticeCount"/>
+        <property name="msrepl_tran_version" column="msrepl_tran_version"/>
+    </class>
+</hibernate-mapping>
