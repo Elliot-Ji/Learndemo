@@ -1,5 +1,8 @@
 package com.example.collections.map;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 自定义hashmap
  * 增加泛型
@@ -9,6 +12,11 @@ package com.example.collections.map;
 public class TestHashMap04<K,V> {
     Node2[] table; //位桶数组,
     int size;     //存放键值对的个数
+
+    public static void main(String[] args) {
+        Map<String,String> map = new HashMap<>();
+    }
+
 
     public TestHashMap04() {
         table = new Node2[16]; //长度一般定义成2的整数次幂

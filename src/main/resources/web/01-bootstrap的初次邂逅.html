@@ -29,5 +29,30 @@
             }
         })
     })
+
+    var s = function(){
+        console.log("dffffffffff");
+    }
+    s()
+
+    function se() {
+        console.log("bibao")
+    }
+    var fine = se;
+    fine()
+
+    function test(){
+        var array = [];
+        for(var i =0;i<10;i++){
+            array[i] = function (){
+                document.write(i + " ");
+            }
+        }
+        return array;
+    }
+    var testarray = test();
+    for(var j=0;j<10;j++){
+        testarray[j]();
+    }
 </script>
 </html>

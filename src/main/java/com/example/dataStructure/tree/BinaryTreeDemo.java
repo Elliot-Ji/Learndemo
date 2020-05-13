@@ -107,6 +107,81 @@ class HeroNode{
     }
 
 
+    /**
+     * 前序遍历查找
+     * @param no
+     * @return
+     */
+    public HeroNode preOrderSearch(int no){
+        if(this.no == no){
+            return this;
+        }
+        HeroNode resNode = null;
+        if(this.left != null){
+            resNode = this.left.preOrderSearch(no);
+        }
+        if(resNode != null){
+            return resNode;
+        }
+        if(this.right != null){
+            resNode = this.right.preOrderSearch(no);
+        }
+        return resNode;
+
+    }
+
+    /**
+     * 中序遍历查找
+     * @param no
+     * @return
+     */
+    public HeroNode infixOrderSearch(int no){
+        HeroNode resNode = null;
+        if(this.left != null){
+            resNode = this.left.preOrderSearch(no);
+        }
+        if(resNode != null){
+            return resNode;
+        }
+        if(this.no == no){
+            return this;
+        }
+        if(this.right != null){
+            resNode = this.right.preOrderSearch(no);
+        }
+        return resNode;
+    }
+
+    /**
+     * 后序遍历查找
+     * @param no
+     * @return
+     */
+    public HeroNode postOrderSearch(int no){
+        HeroNode resNode = null;
+        if(this.left != null){
+            resNode = this.left.preOrderSearch(no);
+        }
+        if(resNode != null){
+            return resNode;
+        }
+
+        if(this.right != null){
+            resNode = this.right.preOrderSearch(no);
+        }
+        if(resNode != null){
+            return resNode;
+        }
+
+        if(this.no == no){
+            return this;
+        }
+        return resNode;
+    }
+
+
+
+
     public HeroNode(int no, String name) {
         this.no = no;
         this.name = name;

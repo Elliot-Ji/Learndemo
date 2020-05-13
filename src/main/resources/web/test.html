@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="js/jquery.min.js"></script>
+<form class="form-horizontal" id="form-search">
+    <input type="text" id="no"/>
+    <select class="form-control col-sm-5" name="type">
+        <option value="">--请选择--</option>
+
+    </select>
+    <div id="ye">123</div>
+    <input type="text" />
+
+</form>
+<script>
+    function fun1(){
+        console.log($('#form-search'));
+        console.log($('[name=type]',$('#form-search')))
+        console.log($('#ye',$('#form-search')));
+        $('#ye',$('#form-search')).css('backgroundColor','red');
+    }
+    $(function () {
+        fun1();
+    });
+</script>
+</body>
+</html>
