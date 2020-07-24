@@ -40,6 +40,19 @@ class BinaryTree{
         this.root = root;
     }
 
+    //删除结点
+    public void delNode(int no){
+        if(root != null){
+            if(root.getNo() == no){
+                root = null;
+            }else{
+                root.delNode(no);
+            }
+        }else{
+            System.out.println("空树,不能删除");
+        }
+    }
+
     //前序遍历
     public void preOrder(){
         if(this.root != null){
@@ -74,6 +87,24 @@ class HeroNode{
     private String name;
     private HeroNode left;//默认为null
     private HeroNode right; //默认为null
+
+    //递归删除节点 p99
+    public void delNode(int no){
+        if(this.left != null && this.left.no == no){
+            this.left = null;
+            return;
+        }
+        if(this.right != null && this.right.no == no){
+            this.right = null;
+            return;
+        }
+        if(this.left != null){
+            this.left.delNode(no);
+        }
+        if(this.right != null){
+            this.right.delNode(no);
+        }
+    }
 
     //前序遍历
     public void preOrder(){
