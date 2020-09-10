@@ -3,8 +3,8 @@ package com.example.dataStructure.tree;
 import java.util.Arrays;
 
 /**
- * 什么是堆
- * 理解思路
+ * 什么是堆?
+ * 理解思路:关键步骤
  * 堆排序:利用堆排序实现数组的有序排序
  * 堆排序的速度非常快, 8百万的数据3,4,5秒排序结束
  */
