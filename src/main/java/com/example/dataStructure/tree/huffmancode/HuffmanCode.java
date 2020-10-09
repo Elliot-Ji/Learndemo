@@ -45,7 +45,7 @@ public class HuffmanCode {
                 ois.close();
                 is.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
         }
     }
