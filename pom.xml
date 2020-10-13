@@ -57,6 +57,12 @@
 			<optional>true</optional>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>3.5.8</version>
+		</dependency>
+
 		<!--Mybatis-Plus 启动器-->
 		<dependency>
 			<groupId>com.baomidou</groupId>
