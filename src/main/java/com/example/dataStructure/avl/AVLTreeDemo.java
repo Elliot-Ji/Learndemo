@@ -1,30 +1,14 @@
-package com.example.dataStructure.binarysorttree;
+package com.example.dataStructure.avl;
 
-/**
- * 二叉排序树的创建,中序遍历,删除
- * 删除结点:
- * 情况一: 删除的是叶子结点
- * 情况二: 删除只有一颗子树的结点
- * 情况三: 删除有两颗子树的结点
- */
-public class BinarySortTreeDemo {
+public class AVLTreeDemo {
     public static void main(String[] args) {
-        int[] arr = {7,3,10,12,5,1,9,2};
-        BinarySortTree binarySortTree = new BinarySortTree();
-        for(int i = 0; i<arr.length;i++){
-            binarySortTree.add(new Node(arr[i]));
-        }
-        binarySortTree.infixOrder();
-        System.out.println("删除叶子节点");
-        binarySortTree.delNode(2);
-        binarySortTree.infixOrder();
+
     }
 }
 
-//创建二叉排序树
-class BinarySortTree{
+//创建AVLTree
+class AVLTree{
     private Node root;
-
     public Node getRoot() {
         return root;
     }
@@ -99,11 +83,11 @@ class BinarySortTree{
 
     //查找要删除的结点
     public Node search(int value){
-       if(root == null){
-           return null;
-       }else{
-           return root.search(value);
-       }
+        if(root == null){
+            return null;
+        }else{
+            return root.search(value);
+        }
     }
 
     //查找要删除结点的父节点
@@ -149,6 +133,53 @@ class Node{
         return "Node{" +
                 "value=" + value +
                 '}';
+    }
+
+    //返回左子树的高度
+    public int leftHeight(){
+        if(left == null){
+            return 0;
+        }
+        return left.height();
+    }
+
+    //左旋
+    public void leftRotate(){
+        //创建一个新节点,以当前的根结点的值
+        Node newNode = new Node(value);
+        //新节点的左子树设置为当前结点的左子树
+        newNode.left = left;
+        //把新节点的右子树设置为当前结点的右子树的左子树
+        newNode.right = right.left;
+        //把当前结点的值替换成右子结点的值
+        value = right.value;
+        //把当前结点的右子树设置成当前结点的右子树的右子树
+        right = right.right;
+        //把当前结点的左子树设置成新的结点
+        left = newNode;
+    }
+
+    //右旋
+    public void rightRotate(){
+        Node newNode = new Node(value);
+        newNode.right = right;
+        newNode.left = left.right;
+        value = left.value;
+        left = left.left;
+        right = newNode;
+    }
+
+    //返回右子树的高度
+    public int rightHeight(){
+        if(right == null){
+            return 0;
+        }
+        return right.height();
+    }
+
+    //返回该节点为根结点的树的高度
+    public int height(){
+        return Math.max(left == null ? 0 : left.height(),right == null ? 0 : right.height())+1;
     }
 
     //查找要删除的结点
@@ -200,6 +231,25 @@ class Node{
                 this.right = node;
             }else{
                 this.right.add(node);
+            }
+        }
+
+        //当添加完后,(右子树的高度-左子树的高度) >1,进行左旋
+        if(rightHeight() - leftHeight() >1){
+            if(right!=null && right.leftHeight()>right.rightHeight()){
+                right.rightRotate();
+                leftRotate();
+            }else{
+                leftRotate();
+            }
+            return; //!!!!!重点
+        }
+        if(leftHeight() - rightHeight() >1){ //右旋
+            if(left != null && left.rightHeight() > left.leftHeight()){
+                left.leftRotate();
+                rightRotate();
+            }else{
+                rightRotate();
             }
         }
     }
