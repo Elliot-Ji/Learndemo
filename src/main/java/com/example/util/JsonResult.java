@@ -1,4 +1,4 @@
-package cn.tedu.ttms.common.web;
+package com.example.util;
 
 /**借助此对象封装Controller方法中有@ResponseBody注解的方法的返回的值,
  * 目的:统一返回值类型,便于在页面中进行统一处理*/
