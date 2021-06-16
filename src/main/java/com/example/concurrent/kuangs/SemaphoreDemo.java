@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
  **/
 public class SemaphoreDemo {
     public static void main(String[] args) {
+        System.out.println(Runtime.getRuntime().availableProcessors());
         Semaphore semaphore = new Semaphore(3);
 
         for (int i = 1; i <= 6 ; i++) {

@@ -1,7 +1,8 @@
 package com.example.pattern.adapter.classadapter;
 
 /**
- * 类适配器
+ * 类适配器:
+ *   最大的作用就是将原本不兼容的接口融合在一起工作
  * @author Elliot Ji
  * @date 2020/3/19.
  */

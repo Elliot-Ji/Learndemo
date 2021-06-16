@@ -22,7 +22,7 @@ public class ProductGetter<T> {
      * 普通的成员方法,此时该方法不能声明为静态方法
      * @return
      */
-    public T getProduct(){
+    public  T getProduct(){
         product = listProd.get(random.nextInt(listProd.size()));
         return product;
     }
