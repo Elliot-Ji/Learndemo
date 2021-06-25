@@ -4,6 +4,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 /**
+ * 注解起作用的 核心就是通过: 反射机制来对应实现相应的功能;
  * Created by Elliot Ji on 2018/12/21.
  */
 public class ParseAnn {
