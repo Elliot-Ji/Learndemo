@@ -58,6 +58,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>5.7.21</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.apache.zookeeper</groupId>
 			<artifactId>zookeeper</artifactId>
 			<version>3.5.8</version>

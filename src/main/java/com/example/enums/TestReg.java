@@ -6,9 +6,18 @@ package com.example.enums;
 public class TestReg {
 
     public static void main(String[] args) {
-         String str = "We are Yong ";
-        String s = replaceStr(str);
-        System.out.println(s);
+//         String str = "We are Yong ";
+//        String s = replaceStr(str);
+//        System.out.println(s);
+
+          String tt = "http://localhost:9802/";
+          if (tt == null || !tt.startsWith("http://localhost:9802/") || !tt.contains("jiangdu.gov.cn")) {
+              System.out.println("yes");
+          }else{
+              System.out.println("no");
+          }
+
+
     }
 
     public static String replaceStr(String str){

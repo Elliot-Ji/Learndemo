@@ -6,7 +6,24 @@ import java.util.Random;
  * Created by Elliot Ji on 2019/1/8.
  */
 public class Car implements Moveable{
+    private String brand;
+    private String doors;
 
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getDoors() {
+        return doors;
+    }
+
+    public void setDoors(String doors) {
+        this.doors = doors;
+    }
 
     @Override
     public void move() {
