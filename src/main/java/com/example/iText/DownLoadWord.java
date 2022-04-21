@@ -11,7 +11,7 @@ public class DownLoadWord {
     public static void main(String[] args) throws IOException {
         XWPFTemplate template = XWPFTemplate.compile("D:\\workspace\\Learndemo\\src\\main\\resources\\template.docx").render(
                 new HashMap<String, Object>(){{
-                    put("title", "Hi, poi-tl Word模板引擎");
+                    put("title", "Hi,poi-tl Word模板引擎");
                 }});
         FileOutputStream out = null;
         try {

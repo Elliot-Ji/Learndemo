@@ -135,9 +135,9 @@ public class SymmetricEncoder {
     }
 
     public static void main(String[] args) {
-        String s = "jdczj";
+        String s = "jdczj1";
         String s1 = AESEncode(s);
-        //String s1 = "iYOlxy+h9ChyH8sYwSnqtg==";
+
         System.out.println(s1);
 
         String ss = AESDecode(s1);

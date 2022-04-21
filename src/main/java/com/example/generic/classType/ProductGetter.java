@@ -10,9 +10,9 @@ import java.util.Random;
  * @createDate: 2021-05-17
  **/
 public class ProductGetter<T> {
-    private T product;
-    private List<T> listProd = new ArrayList<>();
-    private Random random = new Random();
+    T product;
+    private final List<T> listProd = new ArrayList<>();
+    private final Random random = new Random();
 
     public void addProduct (T t){
         listProd.add(t);
@@ -20,7 +20,7 @@ public class ProductGetter<T> {
 
     /**
      * 普通的成员方法,此时该方法不能声明为静态方法
-     * @return
+     * @return T
      */
     public  T getProduct(){
         product = listProd.get(random.nextInt(listProd.size()));
@@ -30,11 +30,11 @@ public class ProductGetter<T> {
     /**
      * 泛型方法:
      *      1.如何定义一个泛型方法
-     *      2.泛型方法独立于泛型类,即泛型方法中的泛型标识有调用方,在调用的过程中明确的
+     *      2.泛型方法独立于泛型类,即泛型方法中的泛型标识由调用方,在调用的过程中明确的
      *      3.泛型方法可以声明为静态方法
-     * @param list
-     * @param <E>
-     * @return
+     * @param list 集合
+     * @param <E>  参数
+     * @return E
      */
     public <E> E getProduct(List<E> list){
         return list.get(random.nextInt(list.size()));
@@ -45,7 +45,7 @@ public class ProductGetter<T> {
 
     /**
      * 静态的泛型方法
-     * @param t
+     * @param t 参数
      * @param e
      * @param k
      * @param <T>
@@ -63,9 +63,10 @@ public class ProductGetter<T> {
      * @param t
      * @param <T>
      */
+    @SafeVarargs
     public static <T> void printT(T... t){
-        for (int i = 0; i < t.length; i++) {
-            System.out.println(t[i]);
+        for (T value : t) {
+            System.out.println(value);
         }
     }
 }
