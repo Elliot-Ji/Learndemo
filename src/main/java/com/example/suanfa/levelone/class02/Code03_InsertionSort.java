@@ -1,4 +1,4 @@
-package com.example.suanfa.levelone.paixu;
+package com.example.suanfa.levelone.class02;
 
 /**
  * 插入排序: 类似斗地主抓牌时,手上的拍已经排好序,摸下一张牌,按顺序插入手中

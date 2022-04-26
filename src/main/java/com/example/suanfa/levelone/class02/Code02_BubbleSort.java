@@ -1,4 +1,4 @@
-package com.example.suanfa.levelone.paixu;
+package com.example.suanfa.levelone.class02;
 
 /**
  * 冒泡排序:

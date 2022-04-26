@@ -1,4 +1,4 @@
-package com.example.suanfa.levelone;
+package com.example.suanfa.levelone.class01;
 
 /**
  * 算法新手---1. 打印int类型的32位进制数  与 位运算

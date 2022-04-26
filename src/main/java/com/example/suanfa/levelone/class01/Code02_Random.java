@@ -1,4 +1,4 @@
-package com.example.suanfa.levelone;
+package com.example.suanfa.levelone.class01;
 
 /**
  * 随机函数的认识

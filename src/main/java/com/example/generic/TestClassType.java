@@ -39,5 +39,6 @@ public class TestClassType {
         Test02<String,Integer> test02 = new Test02<>("count",1000);
         System.out.println(test02.getKey() + "=" + test02.getValue());
 
+
     }
 }
