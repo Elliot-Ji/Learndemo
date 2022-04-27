@@ -1,5 +1,13 @@
-package com.example.suanfa.link;
+package com.example.suanfa.levelone.class05;
 
+/**
+ * 单链表:
+ *      问题1: 单链表反转
+ * 双链表:
+ *      问题2: 双链表反转
+ * @author: Elliot Ji
+ * @createDate:  2022-04-26
+ */
 public class Code02_ReverseList {
 
 	public static class Node {

@@ -1,4 +1,4 @@
-package com.example.suanfa.link;
+package com.example.suanfa.levelone.class05;
 
 public class Code03_PrintCommonPart {
 
