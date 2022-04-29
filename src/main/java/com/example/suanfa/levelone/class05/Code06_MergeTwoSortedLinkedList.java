@@ -1,6 +1,7 @@
 package com.example.suanfa.levelone.class05;
 
 /**
+ * 两个有序链表合并
  * 测试链接：https://leetcode.com/problems/merge-two-sorted-lists
  * @author: Elliot Ji
  * @createDate: 2022-04-27
