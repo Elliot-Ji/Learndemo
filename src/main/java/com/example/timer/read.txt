@@ -1,0 +1,13 @@
+Java定时器:
+    数据结构: 小顶堆(以数组的形式存在),满足小顶堆的特性进行数据的存,取,删除
+    时间轮算法: 链表或者数组实现时间轮
+              round型时间轮
+              分层时间轮 -->cron表达式底层就是用分层时间轮实现
+
+quart:
+      Job: 封装成JobDetail设置属性,常用两个注解: @DisallowConcurrentExecution
+                                             @PersistJobDataAfterExecution
+      Trigger: 触发器,指定执行时间,开始结束时间
+               有优先级
+               misfire: 错过触发
+      Scheduler: 调度器,基于trigger设定执行Job

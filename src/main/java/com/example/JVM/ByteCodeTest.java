@@ -9,6 +9,7 @@ public class ByteCodeTest {
         Date date = new Date();
         int num = 10;
         System.out.println(num);
+
     }
 
 }

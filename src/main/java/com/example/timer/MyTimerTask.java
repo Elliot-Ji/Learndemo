@@ -1,7 +1,5 @@
 package com.example.timer;
 
-import org.apache.logging.log4j.util.IndexedReadOnlyStringMap;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimerTask;
