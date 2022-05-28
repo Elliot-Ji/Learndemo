@@ -105,6 +105,23 @@ public class TestCompletableFuture {
             System.out.println("任务3开始...");
         }, executor);
 
+        /**
+         * 两任务组合,一个完成
+         * 1).applyToEither*(): 两个任务有一个执行完成,获取他的返回值,处理任务并有新的返回值;
+         * 2).acceptEither*(): 两个任务有一个执行完成,获取他的返回值,处理任务,无返回值;
+         * 3).runAfterEither*(): 两个任务有一个执行完成,不需要获取future的结果,处理任务,无返回值;
+         */
+         future01.runAfterEitherAsync(future02,()->{
+             System.out.println("任务3开始.........");
+         },executor);
+
+        /**
+         * 多任务组合
+         * 1).allOf(): 等待所有任务完成
+         * 2).anyOf(): 只要有一个任务完成
+         */
+        CompletableFuture<Void> allOf = CompletableFuture.allOf(future01, future02);
+        allOf.get(); //或者 allOf.join();
 
 
         //System.out.println(future.get());//阻塞方法,获取返回结果
