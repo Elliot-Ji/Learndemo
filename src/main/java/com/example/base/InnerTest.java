@@ -25,7 +25,24 @@ public class InnerTest {
             public void speak() {
                 System.out.println("my test");
             }
-        }.speak();
+        }.say();
+
+        InnerTest innerTest = new InnerTest();
+        innerTest.test( new Boy(){
+            @Override
+            int fly() {
+                return 1000;
+            }
+
+            @Override
+            public String getName() {
+                return "八哥";
+            }
+        });
+    }
+
+    public void test(Boy boy) {
+        System.out.println(boy.getName() + "能说" + boy.fly() + "句话");
     }
 
 }
@@ -34,5 +51,22 @@ interface P{
     void speak();
 }
 
+abstract class Boy {
+    private String name;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    void jump() {
+
+    }
+
+    abstract int fly() ;
+}
 
 
