@@ -7,11 +7,13 @@ package com.example.testdemo;
 public class Test1 {
 
     public static void main(String[] args) {
+        String entName = "江苏佰腾科技有限公司";
+        System.out.println(entName);
+        entName = "\""+ entName + "\"";
+        System.out.println(entName);
 
-        new Thread(() -> System.out.println("测试")).start();
-        System.out.println("main ()");
-
-
+//        new Thread(() -> System.out.println("测试")).start();
+//        System.out.println("main ()");
 //        String[] data = {"efef","ewefef","efefeffefef","eee","fff","eee"};
 //        data = Arrays.stream(data).distinct().toArray(String[]::new);
 //        String s = String.join(" ", data);
