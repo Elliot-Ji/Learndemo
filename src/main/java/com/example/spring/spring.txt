@@ -1,0 +1,115 @@
+1. spring framework学习:
+    1).spring IOC --> Bean的生命周期,AOP实现原理 (反射机制-->jdk动态代理/cglib动态代理),aop的应用(切面,事务),依赖注入原理
+    2).spring MVC --> 实现原理
+    3).其他: 自动装配的原理,注解的实现原理
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    1).spring IOC --> Bean的生命周期,依赖注入的实现原理(控制反转)
+                      spring创建bean对象-->扫描到该类
+                         -->类的构造方法(实例化),又称推断构造方法
+                                      默认使用无参构造方法,
+                                      如果显示声明了,只写了一个构造方法(不管是无参还是有参),则会使用该构造方法;
+                                      如果显示声明无参构造和一个或多个有参构造,且在有参构造器上加上@Autowired,则会使用该有参构造;
+                                      如果没有显示声明无参构造,又写了多个有参构造(未加@Autowired),启动会报错;
+                              归根结底就是要告诉spring,使用哪个构造器方法;
+                              那么问题来了: 使用有参构造时,入参的值如何赋值?
+                                       即从spring容器中查找,如何查找?
+                                              先根据入参的类型(默认单例bean),单例Bean不是等同于单例模式
+                                                      单例bean,是根据bean的名称获取对象时,获取的是同一个对象;
+                                                          实现方式: 将bean放入到Map(spring容器)中;
+                                                             如果只找到一个bean类型,则会直接返回这个类型的对象,
+                                                             如果有多个再根据变量名查找,如果根据变量名查找,找不到,则会报错;
+                                                      原型bean,根据bean的名称获取对象时,获取的不是同一个对象;
+                                              然后变量名查找,类名的变量名默认是类名首字母小写,在配置类中注入对象时,
+                                                           即标注了@Bean注解的方法,获取的对象变量名,默认是方法名;
+                         -->对象(此时属性还未赋值)
+                         -->依赖注入(加了注解的属性),给属性赋值
+                                先判断哪些属性加了注解? -->利用反射
+                                获取加了注解的属性,如何赋值?
+                                    spring容器(Map)--> 类型(先根据类型进行一些的判断,选择) + 变量名查找
+                         -->初始化前,调用指定方法(该方法加上@PostConstruct)
+                         -->初始化,该类implements InitializingBean,重写afterPropertiesSet()方法
+                         -->初始化后(进行AOP,事务处理),需要进行AOP,则生成代理对象
+                                1.判断当前这个对象要不要进行AOP?
+                                     从spring容器中找到所有的切面Bean,遍历,找到缓存起来
+                                2.AOP: 开启AOP功能,定义一个切面@Aspect,对某个类的方法进行处理,
+                                  2.1).什么时候使用cglib? -->当该类没事实现接口时
+                                    动态代理(cglib),生成代理对象,调用test()时,
+                                    class UserServiceProxy extends UserService {
+                                        private UserService target; //此时的target中的属性是有值的
+
+                                        @Override
+                                        public void test(){
+                                             method.invoke(target,args)//target.test()
+                                        }
+                                    }
+                                      执行切面逻辑
+                                      执行业务逻辑
+                                  该类没有实现接口,即 public class UserService {
+                                                       @Autowired
+                                                       OrderService orderService;
+                                                       public void test(){}
+                                                 }
+                                  UserService userService = applicationContext.getBean("userService",UserService.class);
+                                   //此时的userService是该类的代理对象,注意: 此时,该代理对象中的属性没有值
+                                   //(因为代理对象没有进行依赖注入,没有必须赋值)
+                                  userService.test();//在调用该bean对象的指定的方法时,代理对象中的属性有值了
+                                  2.2).什么时候使用JDK动态代理? -->当该类实现一个接口时
+                                       即 public class UserServiceImpl implements UserService{
+                                                                  @Autowired
+                                                                  OrderService orderService;
+                                                                  public void test(){}
+                                               }
+                                3.AOP的应用: 事务, 开启事务(也是利用AOP实现的),返回的bean对象也是一个代理对象
+                                     代理对象.test()-->代理对象先进行开启事务....,
+                                                      然后通过代理对象中的target.test(),此时的target是不会进行事务注解的判断和开启
+                                                 注: 代理对象调用方法时,才会进行注解,事务的开启判断
+                                为什么JDK动态代理必须实现接口?
+                                     Proxy类创建的代理对象默认已经继承了Proxy类,所以必须通过实现接口的方式来实现;
+                                     如$Proxy extends Proxy implements UserService{},
+                         -->bean对象
+
+               备注: 创建bean对象过程中,给某些属性赋值:
+                     方式一: 初始化前的过程中,某个类的方法上加上注解@PostConstruct,来给该类的某个属性赋值
+                     方式二: 在初始化时进行赋值,该类 implements InitializingBean,重写afterPropertiesSet()方法
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
