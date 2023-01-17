@@ -3,7 +3,7 @@ package com.example.suanfa.leveltwo.class01;
 import java.util.Arrays;
 
 /**
- * 选择排序
+ * 选择排序: 遍历n-1个数,每一个数和后面剩下的数比较,找到最小的值,放到之前那个数的位置
  * @author: Elliot Ji
  * @createDate: 2022-05-30
  **/
