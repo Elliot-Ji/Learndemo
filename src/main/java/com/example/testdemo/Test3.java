@@ -3,7 +3,10 @@ package com.example.testdemo;
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author: Elliot Ji
@@ -12,6 +15,7 @@ import java.util.HashMap;
 public class Test3 {
 
     @Test
+
     public void test1(){
         String queryFormat = "{\n" +
                 "    \"nested\": {\n" +
@@ -45,6 +49,17 @@ public class Test3 {
 
         System.out.println(map);
         System.out.println(query);
+    }
+
+    @Test
+    public void test2(){
+        List<String> strings = Arrays.asList("江苏", "养大", "江苏的", "盐都的", "党的纪律", "德吉");
+        if (strings.size() > 4 ) {
+            strings = strings.stream().limit(4).collect(Collectors.toList());
+        }
+        strings.forEach(x -> {
+            System.out.println(x);
+        });
     }
 
 }

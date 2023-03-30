@@ -7,6 +7,15 @@ package com.example.suanfa.leveltwo.class02;
  **/
 public class Code03_MergeSort {
 
+    public static void main(String[] args) {
+        int[] arr = new int[]{3,22,34,1,-3,99,39,44,34,46};
+        mergeSort1(arr);
+        for (int t:arr) {
+            System.out.print(t + " ");
+        }
+
+    }
+
     //递归方法实现
     public static void mergeSort1(int[] arr) {
         if (arr == null || arr.length < 2) {

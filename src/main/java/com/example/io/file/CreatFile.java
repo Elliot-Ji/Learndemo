@@ -1,5 +1,7 @@
 package com.example.io.file;
 
+import org.junit.Test;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -14,6 +16,16 @@ public class CreatFile {
         //create01();
         //create02();
         create03();
+    }
+
+    @Test
+    public void test1(){
+        File file = new File("d:\\jianfei.png");
+        System.out.println(file.isFile());
+        System.out.println(file.isDirectory());
+        System.out.println(file.length());
+        System.out.println(file.canRead());
+        System.out.println(file.canWrite());
     }
 
     //方式一:

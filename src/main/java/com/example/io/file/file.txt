@@ -1,0 +1,12 @@
+单元测试： 使用相对路径时，文件则是存放在modules模块中的
+main方法测试： 使用相对路径时，文件则是存放在project工程中的
+
+IO流：
+    输入流 / 字节流 字符流    / 节点流  处理流
+    输出流
+
+    抽象基类           4个节点流（文件流）     4个缓冲流（处理流）         2个转换流（字节与字符的转换，即编码与解码）
+    InputStream       FileInputStream      BufferedInputStream      InputStreamReader:将一个输入型的字节流转换为输入型的字符流
+    OutputStream      FileOutputStream     BufferedOutputStream     OutputStreamWriter:将一个输出型的字符流转换为输入型的字节流
+    Reader            FileReader           BufferedReader
+    Writer            FileWriter           BufferedWriter
