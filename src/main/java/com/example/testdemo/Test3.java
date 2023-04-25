@@ -3,6 +3,8 @@ package com.example.testdemo;
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -13,9 +15,7 @@ import java.util.stream.Collectors;
  * @createDate: 2023-01-30
  **/
 public class Test3 {
-
     @Test
-
     public void test1(){
         String queryFormat = "{\n" +
                 "    \"nested\": {\n" +
@@ -60,6 +60,24 @@ public class Test3 {
         strings.forEach(x -> {
             System.out.println(x);
         });
+    }
+
+    @Test
+    public void test3(){
+        String lsdMaxValue = "-Infill";
+        try {
+            LocalDate parse = LocalDate.parse(lsdMaxValue, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            System.out.println("dddd");
+        }catch (Exception e) {
+            System.out.println("error");
+        }
+        System.out.println("zoubuz");
+    }
+
+    @Test
+    public void test4(){
+        Test4 test4 = new Test4();
+        System.out.println(test4);
     }
 
 }

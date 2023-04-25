@@ -25,6 +25,7 @@
              method.setAccessible(true);
 
        4.Class类
+           《可以看做是反射的源头--》
            1.查看Class类图,Class类也是类,因此也继承了Object类
            2.Class类对象是如何创建的? -->系统创建出来的,而不是new出来的, ClassLoader.loadClass("全类名")
            3.对于某个类的Class类对象,在内存中只有一份,因为类只加载一次
@@ -40,6 +41,11 @@
              5.annotation:注解
              6.基本数据类型
              7.void
+          获取Class类对象的方式：
+             Class clazz1 = Person.class;
+             Class clazz2 = person.getClass();
+             Class clazz3 = Class.forName("全类名");
+
 
        5.类加载
            5.1 基本说明

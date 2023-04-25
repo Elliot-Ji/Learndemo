@@ -10,3 +10,31 @@ IO流：
     OutputStream      FileOutputStream     BufferedOutputStream     OutputStreamWriter:将一个输出型的字符流转换为输入型的字节流
     Reader            FileReader           BufferedReader
     Writer            FileWriter           BufferedWriter
+
+                                           数据流  内存中的数据写出到具体文件中        对象流  涉及对象的序列化机制
+                                           只能处理基本数据类型和String类型          额外可以处理引用类型
+                                           DataInputStream                       ObjectInputStream
+                                           DataOutputStream                      ObjectOutputStream
+
+对象的序列化机制
+   允许把内存中的java对象转换成平台无关的二进制流，从而允许把这种二进制流持戒保存到磁盘上
+   或通过网络将二进制流传输到另一个网络节点。//当其它程序获取到这种二进制流，就可以恢复成原来的java对象。
+
+   引用类型序列化的要求：
+      1.自定义类要实现Serializable接口
+      2.自定义类声明一个全局常量
+      3.要求自定义类的各个属性也必须是可序列化的
+      注意点：
+         如果不声明全局常量，系统会自动生成一个
+         当修改了引用类之后，反序列化则会报错
+         类中的属性如果声明为static,transient，则不会实现序列化
+
+字符集
+    1. 在存储文件中的字符
+       ascii: 存储英文和标点符号，每个字符占用一个字节
+       iso-8859-1: 每个字符占用1个字节
+       gbk: 中文字符使用2个字节，英文还是1个字节
+       utf-8：存储世界范围内的大部分字符，使用1-4个不等的字节表示一个字符，中文使用3个字节存储
+
+    2.在内存中的字符：
+       在内存中使用的字符集称为Unicode，一个字符（char）占用2个字节

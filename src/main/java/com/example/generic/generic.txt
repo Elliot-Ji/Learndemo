@@ -1,0 +1,12 @@
+泛型：
+
+    1. 判断是否为泛型类： 即类后面是否有<>?
+       声明带泛型的父类： Order<T>  ----> 子类： SubOrder extends Order                 此时子类不是泛型类
+                                             SubOrder extends Order<String>         此时子类不是泛型类
+                                             SubOrder<String> extends Order<String> 此时子类是泛型类
+
+       情况1： 造对象时要指明泛型的具体类型；
+       情况2： 编写子类继承带泛型的父类时，可以指明具体的泛型类型，或者继续使用泛型；
+
+    2.定义泛型方法： 方法声明前是否有<>?
+        方法上的泛型和类上的泛型不是同一个，可以声明为static

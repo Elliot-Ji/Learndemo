@@ -72,9 +72,40 @@
                      方式一: 初始化前的过程中,某个类的方法上加上注解@PostConstruct,来给该类的某个属性赋值
                      方式二: 在初始化时进行赋值,该类 implements InitializingBean,重写afterPropertiesSet()方法
 
+    2).spring aop
+         2.1 导入 spring-aspects坐标
+             @EnableAspectJAutoProxy   开启aop,给容器中注册一个组件，这个组件是一个后置处理器
+             这个后置处理器在容器实例化bean的过程中（创建业务逻辑组件和切面组件）， 拦截组件的创建过程
+             判断该组件是否需要包装，增强 ---》创建一个代理对象
+             然后执行目标方法：代理对象执行目标方法，利用拦截器链，依次进入每一拦截器进行执行
 
+    3).自动装配原理：
+         spring利用依赖注入，完成对IOC容器中各个组件的依赖关系赋值
+         3.1)@Autowired
+              1).默认优先按照类型去容器中找对应的组件：applicationContext.getBean(Dxxx.class);
+              2).如果找到多个相同类型的组件，再将属性名称作为组件的id去容器中查找，@Qualifier("ccc")指定组件名
+              3).自动装配默认一定要赋值，否则会报错。可以修改@Autowired(required=false)
+              4).@Primary 优先首选哪个组件， @Qualifier的优先级大于@Primary
+             @Resource
+                 默认按照组件名称进行装配，但不支持@Primary功能
+             @Inject
+                 需要导入javax.inject包，支持@Primary功能
+             @Autowired可以标在构造器，参数，方法，属性上；都是从容器中获取属性对象
+         3.2).自定义组件要想使用spring的底层组件，如ApplicationContext,BeanFactory，.....
+                只要该组件实现 xxxAware接口即可，在创建对象的时候，会调用接口规定的方法注入相关组件
 
+         3.3)@Profile
 
+https://www.bilibili.com/video/BV1ME411o7Uu?p=16&spm_id_from=pageDriver&vd_source=b5f8254ef4878b9fdd7d9b9213accf9d
+    4).BeanPostProcessor  后置处理器：
+         在bean初始化前后进行一些处理工作
+         该接口就两个方法：
+           postProcessBeforeInitialization： 在初始化前工作
+           postProcessAfterInitialization：在初始化后工作
+
+    5).spring容器-启动创建过程   以下面注解启动类为例
+        入口： AnnotationConfigApplicationContext.refresh();
+        1.prepareRefresh();
 
 
 
