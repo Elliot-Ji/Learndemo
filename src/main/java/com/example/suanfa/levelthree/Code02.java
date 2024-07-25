@@ -1,4 +1,4 @@
-package com.example.suanfa.levelzees;
+package com.example.suanfa.levelthree;
 
 /**
  * 题目2：一个数组中只有两种字符G和B，想让所有的G都放在左侧，B放在右侧或者  G在右侧，B在左侧

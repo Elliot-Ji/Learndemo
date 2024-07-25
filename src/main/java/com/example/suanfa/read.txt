@@ -105,8 +105,14 @@
          快排                 ×                        O(N*logN)
          堆排序               ×                        O(N*logN)
 
+  10.动态规划、KMP、Manacher算法   https://www.bilibili.com/video/BV1Ef4y1T7Qi?p=13&vd_source=b5f8254ef4878b9fdd7d9b9213accf9d
+
+      note： 23/5/19 截止p133，finish first
+             https://www.bilibili.com/video/BV1g3411i7of/?p=133&spm_id_from=333.880.my_history.page.click&vd_source=b5f8254ef4878b9fdd7d9b9213accf9d
+             second level: review  some sort suanfa
 
 
+  刷题：23/8/1  =  https://www.bilibili.com/video/BV13g41157hK?p=30&vd_source=b5f8254ef4878b9fdd7d9b9213accf9d
 
 
 

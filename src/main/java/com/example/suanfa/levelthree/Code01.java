@@ -1,4 +1,4 @@
-package com.example.suanfa.levelzees;
+package com.example.suanfa.levelthree;
 
 /**
  *题目1：绳子覆盖最多的点数

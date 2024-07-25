@@ -30,6 +30,7 @@ public class LamdaDemo1 {
         };
 
         lamdaDemo1.printSomething("huawei",printer);
+        lamdaDemo1.printSomething("huawei",printer1);
         lamdaDemo1.printSomething("huawei2",x -> System.out.println(x));
     }
 

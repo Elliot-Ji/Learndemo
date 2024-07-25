@@ -83,9 +83,10 @@ public class Code01_BSExist {
     }
 
     public static void main(String[] args) {
-        int testTime = 500000;
-        int maxSize = 10;
-        int maxValue = 100;
+        long start = System.currentTimeMillis();
+        int testTime = 10000000;
+        int maxSize = 1000;
+        int maxValue = 10000;
         boolean succeed = true;
         for (int i = 0; i < testTime; i++) {
             int[] arr = generatedRandomArray(maxSize,maxValue);
@@ -100,5 +101,32 @@ public class Code01_BSExist {
             }
         }
         System.out.println(succeed ? "Nice!" : "Fail!");
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
+    }
+
+    public static void FindCPU() {
+        long start = System.currentTimeMillis();
+        int testTime = 10000000;
+        int maxSize = 1000;
+        int maxValue = 10000;
+        boolean succeed = true;
+        for (int i = 0; i < testTime; i++) {
+            int[] arr = generatedRandomArray(maxSize,maxValue);
+            Arrays.sort(arr);
+            int value = (int)((maxValue +1) * Math.random()) - (int)(maxValue * Math.random());
+            if (testQ2(arr,value) != mostLeftNumIndex(arr,value)) {
+                System.out.println(value);
+                System.out.println(testQ2(arr,value));
+                System.out.println(mostLeftNumIndex(arr,value));
+                succeed = false;
+                break;
+            }
+        }
+        System.out.println(succeed ? "Nice!" : "Fail!");
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
+        long e = System.currentTimeMillis();
+
     }
 }
