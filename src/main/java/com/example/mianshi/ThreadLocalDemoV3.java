@@ -117,7 +117,6 @@ public class ThreadLocalDemoV3 {
             throw new RuntimeException(e);
         }
         System.out.println();
-        System.out.println();
 
         //在主线程修改放入了Vue，线程池复用后不好使，获取不到主线程的变量
         inheritableThreadLocal.set(Thread.currentThread().getName()+"_Vue修改了");

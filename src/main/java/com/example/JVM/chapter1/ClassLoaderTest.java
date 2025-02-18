@@ -19,7 +19,7 @@ public class ClassLoaderTest {
         ClassLoader parent = loader.getParent();
         System.out.println(parent);
 
-        //获取启动类加载器（为null，使用C/C++写的）
+        //获取启动类（引导类）加载器（为null，使用C/C++写的）
         ClassLoader parent1 = parent.getParent();
         System.out.println(parent1);
     }
@@ -30,6 +30,10 @@ public class ClassLoaderTest {
         Class<MyNN> clazz1 = MyNN.class;
         ClassLoader loader = clazz1.getClassLoader();
         System.out.println(loader);
+
+        //String 是由引导类加载器加载的。即系统的核心类库都是引导类加载器加载的
+        ClassLoader classLoader = String.class.getClassLoader();
+        System.out.println(classLoader);
     }
 
 }

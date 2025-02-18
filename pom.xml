@@ -134,11 +134,11 @@
 		</dependency>-->
 		<!--end==============================================================-->
 		<!--sql驱动-->
-		<dependency>
-			<groupId>sqljdbc</groupId>
-			<artifactId>sqljdbc</artifactId>
-			<version>4</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>sqljdbc</groupId>-->
+<!--			<artifactId>sqljdbc</artifactId>-->
+<!--			<version>4</version>-->
+<!--		</dependency>-->
 
 		<!--hibernate-->
 		<dependency>
@@ -176,6 +176,18 @@
 			<groupId>com.itextpdf</groupId>
 			<artifactId>itextpdf</artifactId>
 			<version>5.5.11</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.13</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-codec</artifactId>
+					<groupId>commons-codec</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<!--解决中文不显示-->

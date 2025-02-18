@@ -1,11 +1,15 @@
 package com.example.mianshi;
 
 import com.example.mybatis.Employee;
+import com.example.mybatisplus.D;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import javax.swing.*;
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.net.URLDecoder;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -16,7 +20,15 @@ import java.util.stream.Collectors;
  * @date 2024/07/16
  */
 public class Base01 {
-
+    public static void main(String[] args) throws UnsupportedEncodingException {
+        String price = "38.33";
+        System.out.println(Double.valueOf(price));
+        System.out.println(String.valueOf(Double.valueOf(price) * 10000));
+        String decode = URLDecoder.decode("%EF%BC%9C400mA;%C2%B110V%0A", "utf-8");
+        System.out.println(decode);
+        String x = "https://www.czkjgx.com/cdn/statics/2021/12/31/f2ba9c2e-6963-4c73-aee4-8461b13d7ced.jpg";
+        System.out.println(x.substring(x.lastIndexOf("/") + 1));
+    }
     /**
      * i++ 和 ++i 的区别
      *    即： 谁先赋值，谁先自增
