@@ -1,6 +1,8 @@
 package com.example.util;
 
 
+import org.springframework.util.StringUtils;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,6 +17,12 @@ public class TestList {
 
 
    public static void main(String[] args) throws ParseException {
+       String smsCode = "123456";
+       String smsCodeCache = "123456";
+       if (StringUtils.isEmpty(smsCode) || !smsCode.toUpperCase().equals(smsCodeCache)) {
+           System.out.println("验证码错误");
+       }
+
        /*List<Map<Long,String>> set = new ArrayList<>();
        for (int i = 0; i < 40; i++) {
            Map<Long,String> map = new HashMap<>();

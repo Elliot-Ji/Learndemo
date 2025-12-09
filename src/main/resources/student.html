@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息</title>
+    <style>
+        h1 { color: purple; text-align: center; }
+        table { border-collapse: collapse; width: 80%; margin: 0 auto; }
+        th, td { border: 1px solid #000; padding: 5px; text-align: center; }
+        th { background-color: #f0f0f0; }
+    </style>
+    <script>
+        window.onload = function() {
+            // 1. 创建XMLHttpRequest对象，加载student.xml
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'student.xml', true);
+            xhr.send();
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const xmlDoc = xhr.responseXML;
+                    const root = xmlDoc.documentElement; // 获取<student>根节点
+                    const classes = root.getElementsByTagName('class'); // 获取所有<class>节点
+
+                    // 生成标题
+                    const h1 = document.createElement('h1');
+                    h1.textContent = '学生信息';
+                    document.body.appendChild(h1);
+
+                    // 遍历每个班级，生成表格
+                    for (let i = 0; i < classes.length; i++) {
+                        const cls = classes[i];
+                        const classNum = cls.getAttribute('班级号'); // 获取班级号
+
+                        // 生成班级标题行
+                        const classRow = document.createElement('table');
+                        const classHeader = document.createElement('tr');
+                        const classNumCell1 = document.createElement('td');
+                        classNumCell1.colSpan = 3;
+                        classNumCell1.textContent = `班级号`;
+                        const classNumCell2 = document.createElement('td');
+                        classNumCell2.textContent = classNum;
+                        classHeader.appendChild(classNumCell1);
+                        classHeader.appendChild(classNumCell2);
+                        classRow.appendChild(classHeader);
+
+                        // 生成表格表头
+                        const headerRow = document.createElement('tr');
+                        const headers = ['学号', '姓名', '性别', '年龄'];
+                        headers.forEach(header => {
+                            const th = document.createElement('th');
+                            th.textContent = header;
+                            headerRow.appendChild(th);
+                        });
+                        classRow.appendChild(headerRow);
+
+                        // 遍历班级下的学生，生成数据行
+                        const stus = cls.getElementsByTagName('stu');
+                        for (let j = 0; j < stus.length; j++) {
+                            const stu = stus[j];
+                            const stuRow = document.createElement('tr');
+
+                            // 学号（属性）
+                            const idCell = document.createElement('td');
+                            idCell.textContent = stu.getAttribute('学号');
+                            stuRow.appendChild(idCell);
+
+                            // 姓名、性别、年龄（子元素）
+                            const nameCell = document.createElement('td');
+                            nameCell.textContent = stu.getElementsByTagName('姓名')[0].textContent;
+                            stuRow.appendChild(nameCell);
+
+                            const genderCell = document.createElement('td');
+                            genderCell.textContent = stu.getElementsByTagName('性别')[0].textContent;
+                            stuRow.appendChild(genderCell);
+
+                            const ageCell = document.createElement('td');
+                            ageCell.textContent = stu.getElementsByTagName('年龄')[0].textContent;
+                            stuRow.appendChild(ageCell);
+
+                            classRow.appendChild(stuRow);
+                        }
+
+                        document.body.appendChild(classRow);
+                    }
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -17,6 +17,14 @@ public class ClinitTest1 {
     }
 
     public static void main(String[] args) {
-        System.out.println(Son.B);
+        for (int i = 1; i <= 9; i++) {
+            // 内层循环控制列数，列数从 1 开始，最大到当前行数
+            for (int j = 1; j <= i; j++) {
+                // 打印乘法表达式，使用制表符 \t 分隔
+                System.out.print(j + " * " + i + " = " + (i * j) + "\t");
+            }
+            // 每一行结束后换行
+            System.out.println();
+        }
     }
 }

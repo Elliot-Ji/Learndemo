@@ -1,12 +1,14 @@
 package com.example.testdemo;
 
-import org.apache.commons.lang.StringUtils;
+import cn.hutool.json.JSON;
 import org.junit.Test;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static cn.hutool.http.ContentType.JSON;
 
 /**
  * @author Elliot Ji
@@ -16,6 +18,20 @@ public class Test5 {
     private static final Random OR = new Random();
     private static final Random AR = new Random();
     private static final Random DR = new Random();
+
+
+    public static void main(String[] args) {
+        int n = 1;
+        long factorial = 1;
+        long sum = 0;
+        int i = 1;
+        do {
+            factorial *= i;
+            sum += factorial;
+            i++;
+        } while (i <= 100);
+        System.out.println("1！ + 2！ + 3！ + ... + 100! 的和为: " + sum);
+    }
 
 
     @Test
@@ -43,17 +59,7 @@ public class Test5 {
 
     @Test
     public void test3() {
-        List<Long> s = Arrays.asList(1184L,1159L,1189L,1174L,1194L);
-        Long t = 11943L;
-        System.out.println(s.contains(t));
-        String url = "modules/enterprise/assetData.html?id=348";
-        if (url.contains("?id=")) {
-            int i = url.indexOf("?id=");///^[\u4E00-\u9FA5]+$/
-            System.out.println(i);
-            System.out.println(url.substring(i + 4));
-        }
-        String jj = "";
-        System.out.println(StringUtils.isNotEmpty(jj));
+
     }
 
     @Test

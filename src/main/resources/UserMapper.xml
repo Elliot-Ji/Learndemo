@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace对应Mapper接口的全限定名 -->
+<mapper namespace="JiangSu.Test2.mybatis.mapper.UserMapper">
+
+    <!-- 添加用户 -->
+    <insert id="addUser" parameterType="JiangSu.Test2.mybatis.entity.User">
+        INSERT INTO users(name, age) VALUES(#{name}, #{age})
+    </insert>
+
+    <!-- 删除用户 -->
+    <delete id="deleteUserById" parameterType="int">
+        DELETE FROM users WHERE id = #{id}
+    </delete>
+
+    <!-- 更新用户 -->
+    <update id="updateUser" parameterType="JiangSu.Test2.mybatis.entity.User">
+        UPDATE users SET name = #{name}, age = #{age} WHERE id = #{id}
+    </update>
+
+    <!-- 根据id查询用户 -->
+    <select id="getUserById" parameterType="int" resultType="JiangSu.Test2.mybatis.entity.User">
+        SELECT * FROM users WHERE id = #{id}
+    </select>
+
+    <!-- 查询所有用户 -->
+    <select id="getAllUsers" resultType="JiangSu.Test2.mybatis.entity.User">
+        SELECT * FROM users
+    </select>
+</mapper>
